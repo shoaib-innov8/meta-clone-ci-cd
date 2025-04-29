@@ -4,39 +4,28 @@
 This is the backend for the Metaverse project. It provides APIs for user management, including registration, login, and CRUD operations.
 
 ## Prerequisites
-- Node.js (v14 or higher)
-- MongoDB (local or cloud instance)
+- Docker
+- Docker Compose
 
 ## Installation
 1. Clone the repository:
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/shoaib-innov8/metaverse-BE
    cd metaverse-BE
    ```
 
-2. Install dependencies:
+2. Build and start the Docker containers:
    ```bash
-   npm install
+   docker-compose up --build -d
    ```
 
-3. Create a `.env` file in the root directory and add the following:
-   ```
-   JWT_SECRET=yourSecretKey
-   MONGO_URI=yourMongoDBConnectionString
-   ```
-
-4. Seed the database (optional):
+3. Seed the database (optional):
    ```bash
-   npm run seed
+   docker-compose run seed
    ```
    This will populate the database with initial data for testing purposes.
 
-5. Start the server:
-   ```bash
-   npm start
-   ```
-
-6. The server will run at `http://localhost:4000`.
+4. The server will run at `http://localhost:4000`.
 
 ## API Endpoints
 
@@ -151,5 +140,5 @@ This is the backend for the Metaverse project. It provides APIs for user managem
   ```
 
 ## Notes
-- Replace `yourSecretKey` and `yourMongoDBConnectionString` in the `.env` file with your actual values.
 - Use a tool like Postman or cURL to test the APIs.
+- Ensure Docker and Docker Compose are installed and running on your system.
