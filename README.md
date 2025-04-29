@@ -25,12 +25,18 @@ This is the backend for the Metaverse project. It provides APIs for user managem
    MONGO_URI=yourMongoDBConnectionString
    ```
 
-4. Start the server:
+4. Seed the database (optional):
+   ```bash
+   npm run seed
+   ```
+   This will populate the database with initial data for testing purposes.
+
+5. Start the server:
    ```bash
    npm start
    ```
 
-5. The server will run at `http://localhost:4000`.
+6. The server will run at `http://localhost:4000`.
 
 ## API Endpoints
 
