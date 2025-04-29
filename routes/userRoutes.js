@@ -8,8 +8,8 @@ const router = express.Router();
 // Register
 router.post('/register', async (req, res) => {
   try {
-    const { name, email, password, age } = req.body;
-    const user = new User({ name, email, password, age });
+    const { name, email, password, age, company, department, specification, about } = req.body;
+    const user = new User({ name, email, password, age, company, department, specification, about });
     await user.save();
     const { password: _, ...userWithoutPassword } = user.toObject();
     res.status(201).json({ message: 'User registered successfully', user: userWithoutPassword });
@@ -58,7 +58,12 @@ router.get('/:id', async (req, res) => {
 // Update user
 router.put('/:id', async (req, res) => {
   try {
-    const user = await User.findByIdAndUpdate(req.params.id, req.body, { new: true }).select('-password');
+    const { name, email, age, company, department, specification, about } = req.body;
+    const user = await User.findByIdAndUpdate(
+      req.params.id,
+      { name, email, age, company, department, specification, about },
+      { new: true }
+    ).select('-password');
     if (!user) return res.status(404).json({ error: 'User not found' });
     res.json(user);
   } catch (err) {

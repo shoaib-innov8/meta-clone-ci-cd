@@ -43,7 +43,11 @@ This is the backend for the Metaverse project. It provides APIs for user managem
     "name": "John Doe",
     "email": "john@example.com",
     "password": "password123",
-    "age": 25
+    "age": 25,
+    "company": "TechCorp",
+    "department": "Engineering",
+    "specification": "Backend Developer",
+    "about": "Experienced in building scalable APIs."
   }
   ```
 - **Response:**
@@ -54,6 +58,10 @@ This is the backend for the Metaverse project. It provides APIs for user managem
       "name": "John Doe",
       "email": "john@example.com",
       "age": 25,
+      "company": "TechCorp",
+      "department": "Engineering",
+      "specification": "Backend Developer",
+      "about": "Experienced in building scalable APIs.",
       "_id": "userId"
     }
   }
@@ -92,7 +100,11 @@ This is the backend for the Metaverse project. It provides APIs for user managem
       "_id": "userId",
       "name": "John Doe",
       "email": "john@example.com",
-      "age": 25
+      "age": 25,
+      "company": "TechCorp",
+      "department": "Engineering",
+      "specification": "Backend Developer",
+      "about": "Experienced in building scalable APIs."
     }
   ]
   ```
@@ -106,7 +118,11 @@ This is the backend for the Metaverse project. It provides APIs for user managem
     "_id": "userId",
     "name": "John Doe",
     "email": "john@example.com",
-    "age": 25
+    "age": 25,
+    "company": "TechCorp",
+    "department": "Engineering",
+    "specification": "Backend Developer",
+    "about": "Experienced in building scalable APIs."
   }
   ```
 
@@ -116,7 +132,8 @@ This is the backend for the Metaverse project. It provides APIs for user managem
 - **Body:** (example)
   ```json
   {
-    "name": "John Updated"
+    "name": "John Updated",
+    "company": "NewTechCorp"
   }
   ```
 - **Response:**
@@ -125,7 +142,11 @@ This is the backend for the Metaverse project. It provides APIs for user managem
     "_id": "userId",
     "name": "John Updated",
     "email": "john@example.com",
-    "age": 25
+    "age": 25,
+    "company": "NewTechCorp",
+    "department": "Engineering",
+    "specification": "Backend Developer",
+    "about": "Experienced in building scalable APIs."
   }
   ```
 

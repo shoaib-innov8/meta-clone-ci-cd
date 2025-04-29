@@ -3,37 +3,56 @@ const bcrypt = require('bcrypt');
 const User = require('./models/User');
 require('dotenv').config();
 
-
 const seedUsers = [
   {
     name: 'Alice',
     email: 'alice@example.com',
     password: 'password123',
-    "age": 27
+    age: 27,
+    company: 'TechCorp',
+    department: 'Engineering',
+    specification: 'Frontend Developer',
+    about: 'Passionate about building user-friendly interfaces.'
   },
   {
     name: 'Bob',
     email: 'bob@example.com',
     password: 'password456',
-    "age": 31
+    age: 31,
+    company: 'Innovatech',
+    department: 'Marketing',
+    specification: 'SEO Specialist',
+    about: 'Focused on driving organic growth.'
   },
   {
     name: 'Charlie',
     email: 'charlie@example.com',
     password: 'password789',
-    "age": 26
+    age: 26,
+    company: 'DataWorks',
+    department: 'Data Science',
+    specification: 'Data Analyst',
+    about: 'Loves working with data to uncover insights.'
   },
   {
     name: 'Dana',
     email: 'dana@example.com',
     password: 'mypassword',
-    "age": 20
+    age: 20,
+    company: 'HealthPlus',
+    department: 'Healthcare',
+    specification: 'Nurse',
+    about: 'Dedicated to patient care and well-being.'
   },
   {
     name: 'Eve',
     email: 'eve@example.com',
     password: 'supersecure',
-    "age": 29
+    age: 29,
+    company: 'CyberSecure',
+    department: 'IT Security',
+    specification: 'Security Analyst',
+    about: 'Ensures systems are secure and protected.'
   }
 ];
 
