@@ -25,12 +25,12 @@ This is the backend for the Metaverse project. It provides APIs for user managem
    ```
    This will populate the database with initial data for testing purposes.
 
-4. The server will run at `http://localhost:4000`.
+4. The server will run at `http://ec2-3-111-171-165.ap-south-1.compute.amazonaws.com:4000`.
 
 ## API Endpoints
 
 ### Base URL
-`http://localhost:4000/api/users`
+`http://ec2-3-111-171-165.ap-south-1.compute.amazonaws.com:4000/api/users`
 
 ### Endpoints
 
