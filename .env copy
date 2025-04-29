@@ -1,0 +1,2 @@
+JWT_SECRET=metaverseLocal
+MONGO_URI=mongodb+srv://shoaibsabir:zGc93IlaXM8ZlGfn@cluster.ga8hd.mongodb.net/metaverseDB
