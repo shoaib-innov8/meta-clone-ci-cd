@@ -1,10 +1,16 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors');
 const userRoutes = require('./routes/userRoutes');
 require('dotenv').config();
 
 const app = express();
 const PORT = 4000;
+
+app.use(cors({
+    origin: 'https://html-classic.itch.zone',
+    credentials: true
+  }));
 
 // Middleware
 app.use(express.json());
