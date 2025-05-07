@@ -21,7 +21,7 @@ This is the backend for the Metaverse project. It provides APIs for user managem
 
 3. Seed the database (optional):
    ```bash
-   docker-compose run seed
+   docker compose run --rm app npm run seed
    ```
    This will populate the database with initial data for testing purposes.
 

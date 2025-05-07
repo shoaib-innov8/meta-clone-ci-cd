@@ -13,11 +13,3 @@ services:
     volumes:
       - .:/app
       - /app/node_modules
-  seed:
-    image: metaverse-app
-    command: ["npm", "run", "seed"]
-    environment:
-      - JWT_SECRET=${JWT_SECRET}
-      - MONGO_URI=${MONGO_URI}
-    depends_on:
-      - app
