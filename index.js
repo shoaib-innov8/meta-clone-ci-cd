@@ -8,7 +8,7 @@ const app = express();
 const PORT = 4000;
 
 app.use(cors({
-    origin: 'https://html-classic.itch.zone',
+    origin: 'https://d399suiudhjy6p.cloudfront.net',
     credentials: true
   }));
 
