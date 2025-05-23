@@ -2,6 +2,11 @@ const express = require('express');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const User = require('../models/User');
+const auth = require('../middleware/auth');
+
+const multer = require('multer');
+const upload = multer();
+const uploadToS3 = require('../utils/s3Upload');
 
 const router = express.Router();
 
@@ -35,7 +40,7 @@ router.post('/login', async (req, res) => {
 });
 
 // Get all users
-router.get('/', async (req, res) => {
+router.get('/', auth, async (req, res) => {
   try {
     const users = await User.find().select('-password');
     res.json(users);
@@ -45,7 +50,7 @@ router.get('/', async (req, res) => {
 });
 
 // Get user by ID
-router.get('/:id', async (req, res) => {
+router.get('/:id', auth, async (req, res) => {
   try {
     const user = await User.findById(req.params.id).select('-password');
     if (!user) return res.status(404).json({ error: 'User not found' });
@@ -56,12 +61,17 @@ router.get('/:id', async (req, res) => {
 });
 
 // Update user
-router.put('/:id', async (req, res) => {
+router.put('/:id', auth, upload.single('profile_pic'), async (req, res) => {
   try {
     const { name, email, age, company, department, specification, about } = req.body;
-    const user = await User.findByIdAndUpdate(
+    let updateData = { name, email, age, company, department, specification, about };
+    if (req.file) {
+      const s3Result = await uploadToS3(req.file);
+      updateData.profile_pic = s3Result.Location;
+    }
+   const user = await User.findByIdAndUpdate(
       req.params.id,
-      { name, email, age, company, department, specification, about },
+      updateData,
       { new: true }
     ).select('-password');
     if (!user) return res.status(404).json({ error: 'User not found' });
@@ -72,7 +82,7 @@ router.put('/:id', async (req, res) => {
 });
 
 // Delete user
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', auth, async (req, res) => {
   try {
     const user = await User.findByIdAndDelete(req.params.id).select('-password');
     if (!user) return res.status(404).json({ error: 'User not found' });

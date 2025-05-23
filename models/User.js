@@ -10,6 +10,7 @@ const userSchema = new mongoose.Schema({
   department: { type: String, required: false },
   specification: { type: String, required: false },
   about: { type: String, required: false },
+  profile_pic: { type: String, required: false },
 }, { timestamps: true });
 
 
