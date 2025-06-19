@@ -8,7 +8,7 @@ const app = express();
 const PORT = 4000;
 
 app.use(cors({
-    origin: 'https://d-park-dev.innov8.jp',
+    origin: true,
     credentials: true
   }));
 
