@@ -26,6 +26,20 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
+
+    # Create .env file from GitHub Secrets (if your app expects a .env file)
+    - name: Create .env file
+      run: |
+        echo "JWT_SECRET=${{ secrets.JWT_SECRET }}" >> .env
+        echo "MONGO_DEV_URI=${{ secrets.MONGO_DEV_URI }}" >> .env
+        echo "MONGO_TEST_URI=${{ secrets.MONGO_TEST_URI }}" >> .env
+
+
     - run: npm ci
     - run: npm run build --if-present
+      env:
+        NODE_ENV: production
     - run: npm test
+      env:
+        NODE_ENV: test
+        MONGO_TEST_URI: ${{ secrets.MONGO_TEST_URI }}
