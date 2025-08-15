@@ -4,7 +4,9 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js",
-    "seed": "node seed.js"
+    "seed": "node seed.js",
+    "test": "jest --detectOpenHandles",
+    "test:watch": "jest --watch"
   },
   "dependencies": {
     "aws-sdk": "^2.1692.0",
@@ -16,5 +18,9 @@
     "mongoose": "^7.0.0",
     "multer": "^2.0.0",
     "nodemon": "^3.1.10"
+  },
+  "devDependencies": {
+    "jest": "^30.0.5",
+    "supertest": "^7.1.4"
   }
 }

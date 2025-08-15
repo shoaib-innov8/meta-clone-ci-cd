@@ -15,14 +15,22 @@ app.use(cors({
 app.use(express.json());
 
 // MongoDB Connection
-mongoose.connect(process.env.MONGO_URI, {
+const mongoUri = process.env.NODE_ENV === 'test' 
+  ? process.env.MONGO_TEST_URI 
+  : process.env.MONGO_DEV_URI;
+
+mongoose.connect(mongoUri, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-}).then(() => console.log('MongoDB connected'))
+}).then(() => console.log(`MongoDB connected to ${process.env.NODE_ENV} database`))
   .catch(err => console.error('MongoDB connection error:', err));
 
 // Routes
 app.use('/api/users', userRoutes);
 
 // Start Server
-app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
+if (process.env.NODE_ENV !== 'test') {
+  app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
+}
+
+module.exports = app;
